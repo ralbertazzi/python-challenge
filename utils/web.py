@@ -10,3 +10,11 @@ def get_url_bs4(pyurl):
 def get_html_comments(pyurl):
     pysoup = get_url_bs4(pyurl)
     return list(pysoup.find_all(string=lambda text:isinstance(text,Comment)))
+
+def get_image_from_url(pyurl):
+    
+    import numpy as np
+    import cv2
+
+    arr = np.asarray(bytearray(get_url(pyurl)), dtype='uint8')
+    return cv2.imdecode(arr, cv2.IMREAD_COLOR)    
