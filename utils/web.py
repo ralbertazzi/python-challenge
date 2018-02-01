@@ -7,8 +7,14 @@ def get_url(pyurl):
 def get_url_bs4(pyurl):
     return BeautifulSoup(get_url(pyurl), 'html.parser')
 
-def get_html_comments(pyurl):
-    pysoup = get_url_bs4(pyurl)
+def get_html_comments(pyobj):
+    if type(pyobj) == str:
+        pysoup = get_url_bs4(pyurl)
+    elif type(pyobj) == BeautifulSoup:
+        pysoup = pyobj
+    else:
+        raise ValueError('Invalid input pyobj')
+
     return list(pysoup.find_all(string=lambda text:isinstance(text,Comment)))
 
 def get_image_from_url(pyurl):
