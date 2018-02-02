@@ -22,7 +22,7 @@ def get_url_bs4(pyurl, **kwargs):
 
 def get_html_comments(pyobj, **kwargs):
     if type(pyobj) == str:
-        pysoup = get_url_bs4(pyurl, **kwargs)
+        pysoup = get_url_bs4(pyobj, **kwargs)
     elif type(pyobj) == BeautifulSoup:
         pysoup = pyobj
     else:
